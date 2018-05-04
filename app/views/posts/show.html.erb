@@ -1,0 +1,15 @@
+<div class="col-md-12">
+  <h1><%= @post.title %></h1>
+
+  <% if flash[:alert].present? %>
+    <% flash[:alert].each do |value| %>
+      <%= content_tag(:div, :value) %>
+    <% end %>
+  <% end %>
+
+  <p>投稿日:<%= @post.created_at %></p>
+  <hr>
+  <%= simple_format(@post.body) %>
+</div>
+<%= link_to "続きを書く", edit_post_path(@post), class: "btn btn-default"%>
+<%= link_to "完成！", index_complete_posts_path(@post), class: "btn btn-default"%>

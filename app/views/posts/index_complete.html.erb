@@ -1,0 +1,11 @@
+<div class="col-md-12">
+  <h1>終了したプロジェクト</h1>
+  <% @posts.each do |post| %>
+    <div class="article">
+      <h3>タイトル：<%= post.title %></h3>
+      <p>作成日：<%= post.created_at %></p>
+      <p><%= truncate(post.body, length: 50) %></p>
+      <p><%= link_to "続きを読む", post, class: "btn btn-default" %></p>
+    </div>
+  <% end %>
+</div>
