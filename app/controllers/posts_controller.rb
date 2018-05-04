@@ -1,9 +1,7 @@
 class PostsController < ApplicationController
-before_action :set_post, only: [:show, :edit, :update, :complete]
+  before_action :set_post, only: [:show, :edit, :update, :complete]
 
   def index
-    @posts = Post.order(created_at: :desc)
-    @new_posts = Post.order(created_at: :desc).limit(5)
   end
 
   def show
@@ -17,13 +15,24 @@ before_action :set_post, only: [:show, :edit, :update, :complete]
   def create
     @post = Post.new(post_params)
     @post.save
-    redirect_to root_path
+    redirect_to index_uncomplete_posts_path
   end
 
   def edit
   end
 
+
   def complete
+    @post.update(completed: true)
+    redirect_to index_complete_posts_path
+  end
+
+  def index_complete
+    @posts = Post.where(completed: true)
+  end
+
+  def index_uncomplete
+    @posts = Post.where(completed: false)
   end
 
   def update
@@ -39,7 +48,7 @@ before_action :set_post, only: [:show, :edit, :update, :complete]
   private
 
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, :completed)
   end
 
   def set_post
