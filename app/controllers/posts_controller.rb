@@ -5,7 +5,6 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
   end
 
   def new
@@ -14,8 +13,12 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.save
-    redirect_to index_uncomplete_posts_path
+    if @post.save
+      redirect_to index_uncomplete_posts_path
+    else
+      flash.now[:alert] = @post.errors.full_messages
+      render :new
+    end
   end
 
   def edit
@@ -28,11 +31,11 @@ class PostsController < ApplicationController
   end
 
   def index_complete
-    @posts = Post.where(completed: true)
+    @posts = Post.where(completed: true).order(created_at: :desc).page(params[:page]).per(5)
   end
 
   def index_uncomplete
-    @posts = Post.where(completed: false)
+    @posts = Post.where(completed: false).order(created_at: :desc).page(params[:page]).per(5)
   end
 
   def update

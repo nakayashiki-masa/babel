@@ -1,3 +1,25 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.background{
+  background-image: url("/top2.jpg");
+  background-size: cover;
+  height: 1000px;
+}
+
+.target {
+    position: relative;
+    top: 150px; /* 上からどれだけ移動させるか */
+    left: 50px; /* 左からどれだけ移動させるか */
+    font-size: 30px;
+  }
+
+  .input-mysize {
+    width: 250px;
+    height: 50px;
+  }
+
+.input-mysize2{
+    width: 750px;
+    height: 500px;
+}

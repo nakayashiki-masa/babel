@@ -1,4 +1,5 @@
 <div class="col-md-12">
+
   <h1><%= @post.title %></h1>
 
   <% if flash[:alert].present? %>
@@ -8,8 +9,11 @@
   <% end %>
 
   <p>投稿日:<%= @post.created_at %></p>
-  <hr>
+  <br>
+  <h4>本文</h4>
   <%= simple_format(@post.body) %>
 </div>
-<%= link_to "続きを書く", edit_post_path(@post), class: "btn btn-default"%>
-<%= link_to "完成！", complete_post_path(@post), method: :patch, class: "btn btn-default"%>
+<% if @post.completed  == false %>
+  <%= link_to "続きを書く", edit_post_path(@post), class: "btn btn-default"%>
+  <%= link_to "完成！", complete_post_path(@post), method: :patch, class: "btn btn-default"%>
+<% end %>
