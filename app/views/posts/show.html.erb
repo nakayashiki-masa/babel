@@ -2,18 +2,14 @@
 
   <h1><%= @post.title %></h1>
 
-  <% if flash[:alert].present? %>
-    <% flash[:alert].each do |value| %>
-      <%= content_tag(:div, :value) %>
-    <% end %>
-  <% end %>
-
   <p>投稿日:<%= @post.created_at %></p>
   <br>
   <h4>本文</h4>
   <%= simple_format(@post.body) %>
 </div>
-<% if @post.completed  == false %>
-  <%= link_to "続きを書く", edit_post_path(@post), class: "btn btn-default"%>
-  <%= link_to "完成！", complete_post_path(@post), method: :patch, class: "btn btn-default"%>
+<% if current_user %>
+  <% if @post.completed  == false %>
+    <%= link_to "続きを書く", edit_post_path(@post), class: "btn btn-default"%>
+    <%= link_to "完成！", complete_post_path(@post), method: :patch, class: "btn btn-default"%>
+  <% end %>
 <% end %>
