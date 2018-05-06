@@ -4,8 +4,8 @@
     <div class="article">
       <h3>タイトル：<%= post.title %></h3>
       <p>作成日：<%= post.created_at %></p>
-      <p>作成者：<%= post.user.name %></p>
-      <p><%= truncate(post.body, length: 50) %></p>
+      <p>作成者：<% post.post_users.each do |post_user| %><%= post_user.user.name %> <% end %></p>
+      <p>本文：<%= truncate(post.body, length: 50) %></p>
       <p><%= link_to "続きを読む", post, class: "btn btn-default" %></p>
     </div>
   <% end %>

@@ -15,6 +15,8 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
+      @post_user = PostUser.new(post_id: @post.id, user_id: current_user.id)
+      @post_user.save
       redirect_to index_uncomplete_posts_path
     else
       flash.now[:alert] = @post.errors.full_messages
@@ -42,6 +44,7 @@ class PostsController < ApplicationController
   def update
     @post_new = Post.new(post_params)
     if @post.update(body: @post.body + @post_new.body)
+      @post_users = PostUser.find_or_create_by(post_id: @post.id, user_id: current_user.id)
       redirect_to @post
     else
       flash.now[:alert] = @post.errors.full_messages
@@ -52,7 +55,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :user_id)
+    params.require(:post).permit(:title, :body)
   end
 
   def set_post

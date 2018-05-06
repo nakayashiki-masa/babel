@@ -10,9 +10,8 @@
     <div class="form-group">
       <%= form.label "本文" %><br>
       <%= form.text_area :body, class: "input-mysize2" %>
-      <%= form.hidden_field :user_id, value: current_user.id %>
     </div>
-    <%= form.submit '登録する', class: "btn btn-primary" %>
+    <%= form.submit '登録する', data: { confirm: "登録しますか？" }, class: "btn btn-primary" %>
   <% end %>
 
 </div>
