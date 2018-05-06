@@ -3,11 +3,16 @@ ja:
   activerecord:
     models:
       post: "投稿"
+      user: "ユーザー"
     attributes:
       post:
         title: "タイトル"
         body: "本文"
         completed: "プロジェクト完了"
+      user:
+        name: "名前"
+        email: "Eメール"
+        password: "パスワード"
     errors:
       messages:
         record_invalid: "バリデーションに失敗しました: %{errors}"

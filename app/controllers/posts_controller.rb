@@ -32,11 +32,11 @@ class PostsController < ApplicationController
   end
 
   def index_complete
-    @posts = Post.where(completed: true).order(created_at: :desc).page(params[:page]).per(5)
+    @posts = Post.where(completed: true).order(created_at: :desc).page(params[:page]).per(4)
   end
 
   def index_uncomplete
-    @posts = Post.where(completed: false).order(created_at: :desc).page(params[:page]).per(5)
+    @posts = Post.where(completed: false).order(created_at: :desc).page(params[:page]).per(4)
   end
 
   def update
@@ -52,7 +52,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :completed)
+    params.require(:post).permit(:title, :body, :user_id)
   end
 
   def set_post

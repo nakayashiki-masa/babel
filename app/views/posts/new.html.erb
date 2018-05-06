@@ -2,7 +2,6 @@
 
   <h1>記事投稿</h1>
   <br>
-
   <%= form_with model: @post, local: true do |form| %>
     <div class="form-group">
       <%= form.label "タイトル" %><br>
@@ -11,6 +10,7 @@
     <div class="form-group">
       <%= form.label "本文" %><br>
       <%= form.text_area :body, class: "input-mysize2" %>
+      <%= form.hidden_field :user_id, value: current_user.id %>
     </div>
     <%= form.submit '登録する', class: "btn btn-primary" %>
   <% end %>

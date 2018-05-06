@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
+  get 'users/show'
+
   devise_for :users
 
-  resources :posts,except: :destroy do
+  resources :users, :only => [:show]
+
+  resources :posts, except: :destroy do
 
     collection do
       get "index_complete"
