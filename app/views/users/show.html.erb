@@ -3,7 +3,7 @@
     <h2>マイページ</h2>
     <h3>名前:<%= @user.name %></h3>
     <br>
-    <h3>自分が始めたプロジェクト</h3>
+    <h3>自分が関わったプロジェクト</h3>
     <% @posts.each do |post| %>
       <div class="article">
         <h3>タイトル：<%= post.title %></h3>

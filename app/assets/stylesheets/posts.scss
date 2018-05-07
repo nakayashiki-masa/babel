@@ -2,19 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .background{
-  background-image: url("/top2.jpg");
-  background-size: cover;
-  height: 1000px;
+    background-image: url("/top2.jpg");
+    background-size: cover;
+    height: 1000px;
 }
 
 .target {
     position: relative;
-    top: 150px; /* 上からどれだけ移動させるか */
-    left: 50px; /* 左からどれだけ移動させるか */
+    top: 150px;
+    left: 50px;
     font-size: 30px;
   }
 
-  .input-mysize {
+.input-mysize {
     width: 250px;
     height: 30px;
   }

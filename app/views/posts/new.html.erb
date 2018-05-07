@@ -1,5 +1,4 @@
 <div class="col-md-12">
-
   <h1>記事投稿</h1>
   <br>
   <%= form_with model: @post, local: true do |form| %>
@@ -13,5 +12,4 @@
     </div>
     <%= form.submit '登録する', data: { confirm: "登録しますか？" }, class: "btn btn-primary" %>
   <% end %>
-
 </div>
