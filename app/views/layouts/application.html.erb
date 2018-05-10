@@ -23,6 +23,7 @@
         </div>
         <div class="collapse navbar-collapse" id="navbar-collapse-menu">
           <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "使い方", "/posts/about" %></li>
             <% if user_signed_in? %>
               <li><%= link_to current_user.name, users_show_path %></li>
               <li><%= link_to "設定変更", edit_user_registration_path %></li>
