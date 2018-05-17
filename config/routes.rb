@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
     member do
       patch "complete"
+      post "/review_create" => "posts#review_create"
     end
 
   end

@@ -1,0 +1,27 @@
+<div class="col-md-12">
+  <%= form_with(model: @review, local: true, url: "/posts/#{@post.id}/review_create") do |form| %>
+    <% if review.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
+
+        <ul>
+        <% review.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= form.hidden_field :post_id, value: @post.id %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+
+    <div class="field">
+      <p><% form.label :body %></p>
+      <%= form.text_area :body, id: :review_body %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
+</div>

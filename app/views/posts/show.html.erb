@@ -2,7 +2,7 @@
   <h1><%= @post.title %></h1>
   <p>投稿日:<%= @post.created_at %></p>
   <br>
-  <h4>本文</h4>
+  <p>本文</p>
   <%= simple_format(@post.body) %>
 </div>
 <% if current_user %>
@@ -11,3 +11,14 @@
     <%= link_to "完成！", complete_post_path(@post), method: :patch, class: "btn btn-default"%>
   <% end %>
 <% end %>
+<br>
+<h3>レビュー一覧</h3>
+<% @post.reviews.each do |review| %>
+  <p>ユーザー名：<%= review.user.name %></p>
+  <p><%= review.body %></p>
+  <p><%= review.created_at %></p>
+  <br>
+<% end %>
+
+<h3>レビュー投稿</h3>
+<%= render partial: 'new_review', locals: { review: @post.reviews.new } %>

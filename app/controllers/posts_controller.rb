@@ -1,11 +1,12 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :complete]
-  before_action :authenticate_user!, only: [:edit, :create, :update, :new, :complete ]
+  before_action :authenticate_user!, only: [:edit, :create, :update, :new, :complete, :review_create, :show ]
 
   def index
   end
 
   def show
+    @review = Review.new
   end
 
   def about
@@ -55,10 +56,23 @@ class PostsController < ApplicationController
     end
   end
 
+  def review_create
+  @review = Review.new(review_params)
+    if @review.save
+      redirect_to post_path(@review.post)
+    else
+      redirect_to post_path
+    end
+  end
+
   private
 
   def post_params
     params.require(:post).permit(:title, :body)
+  end
+
+  def review_params
+    params.require(:review).permit(:body, :post_id, :user_id)
   end
 
   def set_post
