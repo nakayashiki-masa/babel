@@ -22,8 +22,15 @@ background: -webkit-linear-gradient(to left, #b20a2c, #fffbd5);  /* Chrome 10-25
 background: linear-gradient(to left, #b20a2c, #fffbd5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
   background-size: cover;
-  height: 2000px;
+  height: 1500px;
  }
+
+header{
+  width: 100%;
+  position: fixed;
+  top: 0px;
+  z-index: 10;
+}
 
  .navbar{
    margin-bottom: 0px;
