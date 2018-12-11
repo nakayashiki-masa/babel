@@ -38,6 +38,7 @@ gem 'jquery-rails'
 
 gem 'kaminari'
 gem 'devise'
+gem 'activeadmin'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

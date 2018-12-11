@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  ActiveAdmin.routes(self)
   get "posts/about"
   get 'users/show'
   devise_for :users
